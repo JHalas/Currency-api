@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--ten zakomentowany kod to przykład konfiguracji loggera do automatyczniego zapisu logow do pliku-->
+<!--mozesz tam zauwazyc ze podaje sie pattern nazwy pliku, ale tez pattern pojedynczego logu (godzine,minute, level etc)-->
+<!--a w policies mozna ustawic kiedy ma sie stworzyc nowy plik (na podstawie rozmiaru aktualnege, czy tez czasu etc)-->
+<!--no a to co nie zakomentowane wypisuje logi prosto do konsoli (nigdzie sie to nie zapisuej na stale)-->
+<Configuration status="INFO">
+    <Appenders>logging.config=classpath:log4j2-local.xml
+        <!--        <RollingFile name="debug_file" fileName="/dev.log"-->
+        <!--                     filePattern="/dev%d{yyyy-MM-dd}.log">-->
+        <!--            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %c{1} - %msg%n"/>-->
+        <!--            <Policies>-->
+        <!--                  <SizeBasedTriggeringPolicy size="100 KB" />-->
+        <!--            </Policies>-->
+        <!--        </RollingFile>-->
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{YYYY-MM-dd HH:mm:ss,SSS} %-5level %c{1} - %msg%n"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="console" level="INFO"/>
+            <!--            <AppenderRef ref="debug_file" level="DEBUG"/>-->
+        </Root>
+    </Loggers>
+</Configuration>
